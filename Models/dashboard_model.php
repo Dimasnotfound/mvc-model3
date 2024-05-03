@@ -72,6 +72,24 @@ class dashboardModel {
         return true;
     }
 
+    static function tambahFilm($judul, $rate, $status, $nama_file){
+        global $conn;
+        $stmt = $conn->prepare("INSERT INTO film (judul, rate, status, poster) VALUES (?, ?, ?, ?)");
+        $stmt->bind_param("ssss", $judul, $rate, $status, $nama_file);
+        
+        // Jalankan pernyataan
+        $stmt->execute();
+        
+        // Periksa apakah penambahan film berhasil
+        $success = $stmt->affected_rows > 0;
+        
+        // Tutup statement
+        $stmt->close();
+    
+        return $success;
+    }
+    
+
 }
 
 

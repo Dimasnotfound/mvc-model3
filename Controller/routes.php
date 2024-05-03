@@ -22,3 +22,4 @@ route('editFilm','post', 'dashboardController::editFilm');
 
 // tambah film
 route('tambahFilm','get', function () { return view('crudViews/tambah'); });
+route('tambahFilm','post', 'dashboardController::tambahFilm');

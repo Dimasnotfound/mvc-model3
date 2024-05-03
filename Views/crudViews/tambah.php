@@ -43,9 +43,7 @@
                 Data dibawah ini ya.</p>
             <div id="formTambahData" class="add-form" style="display: block;">
                 <!-- Tambahkan id dan ubah tag form -->
-                <form action="koneksitambah.php" method="POST" enctype="multipart/form-data">
-                    <label for="id">ID:</label>
-                    <input type="text" id="id" name="id" disabled>
+                <form action="<?= urlpath('tambahFilm') ?>" method="POST" enctype="multipart/form-data">
                     <label for="judul">Judul:</label>
                     <input type="text" id="judul" name="judul">
                     <label for="rate">Rate:</label>
@@ -56,7 +54,7 @@
                         <option value="Finish">Finish</option>
                     </select>
                     <label for="poster">Poster:</label>
-                    <input type="file" id="poster" name="poster" accept="uploads/*">
+                    <input type="file" id="poster" name="poster" accept="uploads/*" required>
                     <button id="submitEntryBtn" style="margin-bottom: 10px;">Simpan</button>
             </div>
         </div>

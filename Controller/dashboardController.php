@@ -143,10 +143,37 @@ class dashboardController{
 
     // tambah film
 
-    public function tambahFilm(){
-        return view('crudViews/tambah');
-        
+    static function tambahFilm(){
+        // Periksa apakah data yang diperlukan tersedia
+        if (isset($_POST['judul'], $_POST['rate'], $_POST['status'], $_FILES['poster'])) {
+            $judul = $_POST['judul'];
+            $rate = $_POST['rate'];
+            $status = $_POST['status'];
+    
+            // Ambil nama file gambar
+            $nama_file = $_FILES['poster']['name'];
+            $lokasi = 'uploads/';
+    
+            // Periksa apakah file gambar berhasil diunggah
+            if(move_uploaded_file($_FILES['poster']['tmp_name'], $lokasi.$nama_file)){
+                // Panggil fungsi tambahFilm dari model dan kirimkan data film
+                $success = dashboardModel::tambahFilm($judul, $rate, $status, $nama_file);
+                
+                // Jika penambahan film berhasil, arahkan ke halaman dashboard
+                if ($success) {
+                    header("Location: " . BASEURL . "dashboard");
+                    exit();
+                } else {
+                    echo "Gagal menambahkan film. Silakan coba lagi.";
+                }
+            } else {
+                echo "Gagal mengunggah file gambar.";
+            }
+        } else {
+            echo "Data tidak lengkap.";
+        }
     }
+    
     
 
 
