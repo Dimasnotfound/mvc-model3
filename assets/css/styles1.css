@@ -58,6 +58,18 @@ td {
   right: 20px;
 }
 
+.edit-btn {
+  text-decoration: none;
+  color: black;
+  padding: 10px;
+  background-color: white;
+  border: 2px solid black; /* Tambahkan properti border */
+}
+
+.edit-btn:hover {
+  background-color: lightgray;
+}
+
 .logout button {
   padding: 10px 20px;
   background-color: #2d3699;

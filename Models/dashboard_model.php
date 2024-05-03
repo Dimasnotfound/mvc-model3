@@ -88,6 +88,20 @@ class dashboardModel {
     
         return $success;
     }
+
+    static function deleteFilmByid($id){
+        global $conn;
+        $stmt = $conn->prepare("DELETE FROM film WHERE id=?");
+        $stmt->bind_param("i", $id);
+        
+        if ($stmt->execute()) {
+            $stmt->close();
+            return true;
+        } else {
+            $stmt->close();
+            return false;
+        }
+    }
     
 
 }

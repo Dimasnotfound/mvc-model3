@@ -173,6 +173,22 @@ class dashboardController{
             echo "Data tidak lengkap.";
         }
     }
+
+    // delete film 
+    static function deleteFilm(){
+        $id = intval($_GET['id']);
+        // var_dump($id);
+        $success = dashboardModel::deleteFilmByid($id);
+        if($success) {
+            $data = dashboardModel::getAll();
+            echo '<script>alert("Data berhasil dihapus.");</script>';
+            return view('dashboard',['result' => $data]);         
+        } else {
+            echo '<script>alert("GAGAL.");</script>';
+            $data = dashboardModel::getAll();
+            return view('dashboard',['result' => $data]);         
+        }
+    }
     
     
 
