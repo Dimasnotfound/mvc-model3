@@ -1,29 +1,22 @@
 <?php
 
-// login regis
-route('/','get', function () { return view('registrasi'); });
-route('login','get', function () { return view('login'); });
-route('registrasi','get', function () { return view('registrasi'); });
+// Login method
+route('/', 'GET', function () {
+    return view('login');
+});
 
+// Dashboard
+route('dashboard', 'GET', 'dashboardController::index');
 
-// regist
-route('registrasi','post', 'dashboardController::regist');
+// Reservasi menu
+route('dataReservasi', 'GET', 'dashboardController::reservasi');
 
+// Tambah data reservasi
+route('tambahReservasi', 'POST', 'dashboardController::tambahData');
 
-// auth login
-route('login','post', 'dashboardController::login');
-route('dashboard','get', 'dashboardController::index');
+// Edit reservasi
+route('editReservasi', 'GET', 'dashboardController::editReservasi');
+route('editReservasiUpdate', 'POST', 'dashboardController::editReservasiUpdate');
 
-
-// edit film
-route('editFilm','get', 'dashboardController::editFilm');
-route('editFilm','post', 'dashboardController::editFilm');
-
-
-// tambah film
-route('tambahFilm','get', function () { return view('crudViews/tambah'); });
-route('tambahFilm','post', 'dashboardController::tambahFilm');
-
-
-// Delete FIlm
-route('deleteFilm','get', 'dashboardController::deleteFilm');
+// Delete data
+route('deleteData', 'GET', 'dashboardController::deleteData');
